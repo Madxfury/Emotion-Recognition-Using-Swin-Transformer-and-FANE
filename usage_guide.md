@@ -28,7 +28,7 @@ Copy code
 
 Use the provided preprocessing script to split your dataset into training, validation, and testing sets:
 
-```bash
+
 python utilities/preprocess_data.py
 This will automatically:
 
@@ -68,14 +68,12 @@ Parameter	Description	Default
 
 Trained model weights will be saved in the Models/ directory as:
 
-Copy code
 Models/Swin_FANE_Best_Model.pth
 📊 Model Evaluation
 Step 1: Evaluate Trained Model
 Once the model is trained, evaluate it on the test dataset:
 
-bash
-Copy code
+
 python utilities/evaluate_model.py
 Step 2: Output Metrics
 The evaluation script provides the following metrics:
@@ -94,8 +92,7 @@ Confusion Matrix (optional visualization)
 
 Example output:
 
-sql
-Copy code
+
 📊 FINAL TEST SET ACCURACY: 93.4%
 Precision (avg): 92.8%
 F1-Score (avg): 93.0%
@@ -103,8 +100,7 @@ F1-Score (avg): 93.0%
 Grad-CAM Visualization
 To visualize which regions influenced the model’s decision:
 
-bash
-Copy code
+
 python utilities/visualize_results.py --model swin_fane --checkpoint Models/Swin_FANE_Best_Model.pth
 This will generate Grad-CAM heatmaps for each emotion class, showing key facial regions such as eyes, mouth, and eyebrows.
 
@@ -115,23 +111,20 @@ Confusion matrices can be plotted directly in Jupyter or saved as an image file 
 Adjusting Hyperparameters
 Modify the hyperparameters in train_model.py:
 
-python
-Copy code
+
 learning_rate = 1e-4
 dropout_rate = 0.6
 weight_decay = 1e-5
 Layer Freezing Strategy (Recommended for Transformers)
 Freeze the initial Swin Transformer layers for stable training during early epochs:
 
-python
-Copy code
+
 for name, param in model.backbone.named_parameters():
     if 'layers.0' in name or 'layers.1' in name:
         param.requires_grad = False
 Unfreeze after 10 epochs to fine-tune deeper representations:
 
-python
-Copy code
+
 if epoch == 10:
     for name, param in model.backbone.named_parameters():
         param.requires_grad = True
@@ -159,10 +152,3 @@ For additional support, refer to the main README.md or contact:
 📩 Sanskar Parab – sanskarparab@somaiya.edu
 📩 Tanisha Saha – tanishasaha@somaiya.edu
 
-yaml
-Copy code
-
----
-
-Would you like me to also generate a **`utilities/preprocess_data.py` example script** to match this guide (train/val/test split + augmentation)?  
-That would make your repo fully reproducible and GitHub-review ready.
