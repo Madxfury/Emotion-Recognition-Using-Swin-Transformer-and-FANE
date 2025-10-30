@@ -21,8 +21,6 @@ Ensure the dataset directory follows this structure:
 ├── Sad
 └── Surprise
 
-bash
-Copy code
 
 ### Preprocessing the Dataset
 
@@ -151,4 +149,5 @@ PyTorch Documentation – https://pytorch.org/docs/stable/index.html
 For additional support, refer to the main README.md or contact:
 📩 Sanskar Parab – sanskarparab@somaiya.edu
 📩 Tanisha Saha – tanishasaha@somaiya.edu
+
 
